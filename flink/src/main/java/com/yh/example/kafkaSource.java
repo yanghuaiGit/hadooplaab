@@ -17,6 +17,7 @@ public class kafkaSource {
 
     public static void main(String[] args) throws Exception {
 
+        //设置运行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "localhost:9092");
@@ -24,12 +25,15 @@ public class kafkaSource {
         FlinkKafkaConsumer<String> consumer = new FlinkKafkaConsumer<>("hello", new SimpleStringSchema(), properties);
 
         consumer.setStartFromEarliest();
-        DataStream<String> stream;
-        stream = env
+
+        //配置数据源读取数据
+        DataStream<String> stream= env
                 .addSource(consumer);
 
         stream.map(i -> i + "2")
                 .print("stream").setParallelism(1);
+
+        //提交执行
         env.execute();
     }
 
