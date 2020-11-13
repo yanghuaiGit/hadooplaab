@@ -46,12 +46,16 @@ public class kerberosToken {
         conf.set("dfs.namenode.kerberos.principal", "hdfs/_HOST@DTSTACK.COM");
 
         UserGroupInformation.setConfiguration(conf);
-
-        UserGroupInformation tokenUGI = UserGroupInformation.createRemoteUser("yarn");
+        //kinit -kt /Users/yanghuai/fsdownload/hdfs.keytab hdfs/eng-cdh1@DTSTACK.COM
+        //kdestroy
+        //klist
+//        UserGroupInformation.getLoginUser();
 
         UserGroupInformation kerberosUGI = UserGroupInformation.loginUserFromKeytabAndReturnUGI("hdfs/eng-cdh1@DTSTACK.COM", "/Users/yanghuai/fsdownload/hdfs.keytab");
         Credentials creds = new Credentials();
 
+
+        UserGroupInformation tokenUGI = UserGroupInformation.createRemoteUser("yarn");
         kerberosUGI.doAs((PrivilegedExceptionAction<Void>) () -> {
             FileSystem fs = FileSystem.get(conf);
             // get delegation tokens, add them to the provided credentials. set renewer to ‘yarn’

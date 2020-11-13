@@ -15,7 +15,6 @@ public class JaasClient {
 //            LoginContext context = new LoginContext(loginModuleName);
             LoginContext context = new LoginContext(loginModuleName,null,null,new Krb5Configuration());
 
-
             //login 成功 会对一个新的Subjec对象填入验证信息
             context.login();
             System.out.println("principals--->"+context.getSubject().getPrincipals());
