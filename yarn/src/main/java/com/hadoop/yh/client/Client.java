@@ -81,12 +81,12 @@ public class Client {
         //ApplicationMaster 向RM注册
         RegisterApplicationMasterResponse response = asyncClient.registerApplicationMaster("localhost", 8081, "http://");
         //添加Container请求
-        asyncClient.addContainerRequest(AMRMClient.ContainerRequest.newBuilder().build());
+//        asyncClient.addContainerRequest(AMRMClient.ContainerRequest.newBuilder().build());
         //等待应用程序结束
         asyncClient.unregisterApplicationMaster(FinalApplicationStatus.SUCCEEDED, "appMsg", null);
         asyncClient.stop();
 
-      //NM交互部分
+        //NM交互部分
         NMClientAsyncImpl nmClientAsync = new NMClientAsyncImpl(new MyNmCallbackHandler());
         nmClientAsync.init(new Configuration());
         nmClientAsync.start();
@@ -98,11 +98,11 @@ public class Client {
     }
 
 
-
-    static class MyCallbackHandler extends AMRMClientAsync.AbstractCallbackHandler {
+    static class MyCallbackHandler implements AMRMClientAsync.CallbackHandler {
         /**
          * 被调用时机 RM为AM返回的心跳应答中包含完成的Container信息
          * 如果心跳应答中同时包含完成的Container 和 新分配的Container 该回调函数会在 onContainersAllocated 之前调用
+         *
          * @param list
          */
         @Override
@@ -113,6 +113,7 @@ public class Client {
         /**
          * RM为AM返回的心跳包包含新分配的Container信息
          * 如果同时包含完成的Container 和 新分配的Container 会在 onContainersCompleted 之前回调
+         *
          * @param list
          */
         @Override
@@ -120,10 +121,6 @@ public class Client {
 
         }
 
-        @Override
-        public void onContainersUpdated(List<UpdatedContainer> list) {
-
-        }
 
         /**
          * RM通知AM停止运行
@@ -135,6 +132,7 @@ public class Client {
 
         /**
          * RM管理的节点发生变化 比如健康节点变得不健康 节点不可用
+         *
          * @param list
          */
         @Override
@@ -149,6 +147,7 @@ public class Client {
 
         /**
          * 任何出现异常
+         *
          * @param throwable
          */
         @Override
@@ -157,7 +156,7 @@ public class Client {
         }
     }
 
-    static class MyNmCallbackHandler extends NMClientAsync.AbstractCallbackHandler{
+    static class MyNmCallbackHandler implements NMClientAsync.CallbackHandler {
         @Override
         public void onContainerStarted(ContainerId containerId, Map<String, ByteBuffer> map) {
 
@@ -178,15 +177,6 @@ public class Client {
 
         }
 
-        @Override
-        public void onContainerResourceIncreased(ContainerId containerId, Resource resource) {
-
-        }
-
-        @Override
-        public void onContainerResourceUpdated(ContainerId containerId, Resource resource) {
-
-        }
 
         @Override
         public void onGetContainerStatusError(ContainerId containerId, Throwable throwable) {
@@ -194,19 +184,12 @@ public class Client {
         }
 
         @Override
-        public void onIncreaseContainerResourceError(ContainerId containerId, Throwable throwable) {
-
-        }
-
-        @Override
-        public void onUpdateContainerResourceError(ContainerId containerId, Throwable throwable) {
-
-        }
-
-        @Override
         public void onStopContainerError(ContainerId containerId, Throwable throwable) {
 
         }
+
+
     }
 
 }
+
