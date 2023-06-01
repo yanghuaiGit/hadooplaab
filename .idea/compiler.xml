@@ -10,6 +10,7 @@
         <module name="mapreduce" />
         <module name="yarn" />
         <module name="util" />
+        <module name="flink-native-k8s" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
