@@ -7,5 +7,57 @@
     <file url="file://$PROJECT_DIR$/hdfs/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/util/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/util/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-catalog/chunjun-catalog-hive/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-catalog/chunjun-catalog-iceberg/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-catalog/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-catalog/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-elasticsearch-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-hbase-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-hdfs-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-hdfs/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-hive1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-hudi/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-iceberg/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-influxdb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-jdbc-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-mysqld/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-odps/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-phoenix4/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-polardb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-socket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-sparkthrift/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-tdengine/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-vertica/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/chunjun-connector-websocket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-connectors/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-ddl/chunjun-ddl-base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-ddl/chunjun-ddl-mysql/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-ddl/chunjun-ddl-oracle/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-ddl/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-ddl/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-dirty/chunjun-dirty-hive/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-dirty/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-dirty/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-docker/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-docker/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-extend/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-formats/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-formats/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-metrics/chunjun-metrics-mysql/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-metrics/chunjun-metrics-prometheus/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-metrics/chunjun-metrics-rdb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-metrics/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-metrics/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-restore/chunjun-restore-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-restore/chunjun-restore-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-restore/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-restore/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-tools/chunjun-tools-replace/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-tools/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/chunjun-tools/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../workspace/flinkx_1.12/src/main/resources" charset="UTF-8" />
   </component>
 </project>

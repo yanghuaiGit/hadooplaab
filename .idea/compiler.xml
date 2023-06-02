@@ -8,12 +8,110 @@
         <outputRelativeToContentRoot value="true" />
         <module name="flink" />
         <module name="mapreduce" />
-        <module name="yarn" />
         <module name="util" />
         <module name="flink-native-k8s" />
+        <module name="yarn" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="chunjun" target="1.8" />
+      <module name="chunjun-catalog" target="1.8" />
+      <module name="chunjun-catalog-dt" target="1.8" />
+      <module name="chunjun-catalog-hive" target="1.8" />
+      <module name="chunjun-catalog-iceberg" target="1.8" />
+      <module name="chunjun-catalog-jdbc" target="1.8" />
+      <module name="chunjun-clients" target="1.8" />
+      <module name="chunjun-common" target="1.8" />
+      <module name="chunjun-connector-binlog" target="1.8" />
+      <module name="chunjun-connector-cassandra" target="1.8" />
+      <module name="chunjun-connector-clickhouse" target="1.8" />
+      <module name="chunjun-connector-db2" target="1.8" />
+      <module name="chunjun-connector-dm" target="1.8" />
+      <module name="chunjun-connector-doris" target="1.8" />
+      <module name="chunjun-connector-elasticsearch-base" target="1.8" />
+      <module name="chunjun-connector-elasticsearch7" target="1.8" />
+      <module name="chunjun-connector-emqx" target="1.8" />
+      <module name="chunjun-connector-file" target="1.8" />
+      <module name="chunjun-connector-filesystem" target="1.8" />
+      <module name="chunjun-connector-ftp" target="1.8" />
+      <module name="chunjun-connector-gbase" target="1.8" />
+      <module name="chunjun-connector-greatdb" target="1.8" />
+      <module name="chunjun-connector-greenplum" target="1.8" />
+      <module name="chunjun-connector-hbase-1.4" target="1.8" />
+      <module name="chunjun-connector-hbase-base" target="1.8" />
+      <module name="chunjun-connector-hbase2" target="1.8" />
+      <module name="chunjun-connector-hdfs" target="1.8" />
+      <module name="chunjun-connector-hdfs-base" target="1.8" />
+      <module name="chunjun-connector-hive" target="1.8" />
+      <module name="chunjun-connector-hive1" target="1.8" />
+      <module name="chunjun-connector-http" target="1.8" />
+      <module name="chunjun-connector-hudi" target="1.8" />
+      <module name="chunjun-connector-iceberg" target="1.8" />
+      <module name="chunjun-connector-impala" target="1.8" />
+      <module name="chunjun-connector-influxdb" target="1.8" />
+      <module name="chunjun-connector-jdbc-base" target="1.8" />
+      <module name="chunjun-connector-kafka" target="1.8" />
+      <module name="chunjun-connector-kingbase" target="1.8" />
+      <module name="chunjun-connector-kudu" target="1.8" />
+      <module name="chunjun-connector-mongodb" target="1.8" />
+      <module name="chunjun-connector-mysql" target="1.8" />
+      <module name="chunjun-connector-mysqld" target="1.8" />
+      <module name="chunjun-connector-oceanbase" target="1.8" />
+      <module name="chunjun-connector-oceanbasecdc" target="1.8" />
+      <module name="chunjun-connector-odps" target="1.8" />
+      <module name="chunjun-connector-opentsdb" target="1.8" />
+      <module name="chunjun-connector-oracle" target="1.8" />
+      <module name="chunjun-connector-oracle9" target="1.8" />
+      <module name="chunjun-connector-oraclelogminer" target="1.8" />
+      <module name="chunjun-connector-pgwal" target="1.8" />
+      <module name="chunjun-connector-phoenix4" target="1.8" />
+      <module name="chunjun-connector-phoenix5" target="1.8" />
+      <module name="chunjun-connector-polardb" target="1.8" />
+      <module name="chunjun-connector-postgresql" target="1.8" />
+      <module name="chunjun-connector-rabbitmq" target="1.8" />
+      <module name="chunjun-connector-redis" target="1.8" />
+      <module name="chunjun-connector-rocketmq" target="1.8" />
+      <module name="chunjun-connector-s3" target="1.8" />
+      <module name="chunjun-connector-saphana" target="1.8" />
+      <module name="chunjun-connector-socket" target="1.8" />
+      <module name="chunjun-connector-solr" target="1.8" />
+      <module name="chunjun-connector-sparkthrift" target="1.8" />
+      <module name="chunjun-connector-sqlserver" target="1.8" />
+      <module name="chunjun-connector-sqlservercdc" target="1.8" />
+      <module name="chunjun-connector-starrocks" target="1.8" />
+      <module name="chunjun-connector-stream" target="1.8" />
+      <module name="chunjun-connector-sybase" target="1.8" />
+      <module name="chunjun-connector-tdengine" target="1.8" />
+      <module name="chunjun-connector-tidb" target="1.8" />
+      <module name="chunjun-connector-vertica" target="1.8" />
+      <module name="chunjun-connector-vertica11" target="1.8" />
+      <module name="chunjun-connector-websocket" target="1.8" />
+      <module name="chunjun-connectors" target="1.8" />
+      <module name="chunjun-core" target="1.8" />
+      <module name="chunjun-ddl" target="1.8" />
+      <module name="chunjun-ddl-base" target="1.8" />
+      <module name="chunjun-ddl-mysql" target="1.8" />
+      <module name="chunjun-ddl-oracle" target="1.8" />
+      <module name="chunjun-dirty" target="1.8" />
+      <module name="chunjun-dirty-hive" target="1.8" />
+      <module name="chunjun-dirty-log" target="1.8" />
+      <module name="chunjun-dirty-mysql" target="1.8" />
+      <module name="chunjun-docker" target="1.8" />
+      <module name="chunjun-extend" target="1.8" />
+      <module name="chunjun-formats" target="1.8" />
+      <module name="chunjun-json" target="1.8" />
+      <module name="chunjun-metrics" target="1.8" />
+      <module name="chunjun-metrics-mysql" target="1.8" />
+      <module name="chunjun-metrics-prometheus" target="1.8" />
+      <module name="chunjun-metrics-rdb" target="1.8" />
+      <module name="chunjun-ogg" target="1.8" />
+      <module name="chunjun-protobuf" target="1.8" />
+      <module name="chunjun-restore" target="1.8" />
+      <module name="chunjun-restore-common" target="1.8" />
+      <module name="chunjun-restore-mysql" target="1.8" />
+      <module name="chunjun-tools" target="1.8" />
+      <module name="chunjun-tools-common" target="1.8" />
+      <module name="chunjun-tools-replace" target="1.8" />
       <module name="hdfs" target="1.8" />
     </bytecodeTargetLevel>
   </component>
