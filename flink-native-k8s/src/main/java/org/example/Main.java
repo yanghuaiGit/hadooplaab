@@ -1,39 +1,100 @@
 package org.example;
 
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.flink.api.common.JobID;
 import org.apache.flink.client.deployment.ClusterClientFactory;
 import org.apache.flink.client.deployment.ClusterDescriptor;
+import org.apache.flink.client.deployment.ClusterSpecification;
+import org.apache.flink.client.deployment.application.ApplicationConfiguration;
 import org.apache.flink.client.program.ClusterClient;
+import org.apache.flink.client.program.ClusterClientProvider;
 import org.apache.flink.client.program.PackagedProgram;
 import org.apache.flink.client.program.PackagedProgramUtils;
-import org.apache.flink.configuration.Configuration;
-import org.apache.flink.configuration.CoreOptions;
-import org.apache.flink.configuration.DeploymentOptions;
-import org.apache.flink.configuration.GlobalConfiguration;
+import org.apache.flink.configuration.*;
 import org.apache.flink.core.execution.DetachedJobExecutionResult;
 import org.apache.flink.kubernetes.KubernetesClusterClientFactory;
+import org.apache.flink.kubernetes.KubernetesClusterDescriptor;
+import org.apache.flink.kubernetes.configuration.KubernetesConfigOptions;
+import org.apache.flink.kubernetes.configuration.KubernetesDeploymentTarget;
 import org.apache.flink.kubernetes.executors.KubernetesSessionClusterExecutor;
 import org.apache.flink.runtime.jobgraph.JobGraph;
 import org.apache.flink.runtime.jobgraph.SavepointRestoreSettings;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-//        test();
-        Configuration flinkConfigure = GlobalConfiguration.loadConfiguration("/Users/yh/Downloads/flink-1.12.7/conf");
+
+        String conf = "/Users/yh/Downloads/flink-1.12.7/conf";
+
+        Configuration flinkConfigure = GlobalConfiguration.loadConfiguration(conf);
         flinkConfigure.setString("kubernetes.cluster-id", "flink-k8s-session-cluster-yh");
         flinkConfigure.setString("kubernetes.jobmanager.service-account", "flink");
         flinkConfigure.setString("kubernetes.rest-service.exposed.type", "NodePort");
         flinkConfigure.setString("taskmanager.numberOfTaskSlots", "2");
         flinkConfigure.setString("taskmanager.memory.process.size", "2g");
         flinkConfigure.setString("kubernetes.taskmanager.cpu", "1");
-        flinkConfigure.setString("kubernetes.container.image", "yhbest/flinkk8s:1.2");
+        flinkConfigure.setString("kubernetes.container.image", "yhbest/flinkk8s:1.7");
+        flinkConfigure.setString("classloader.resolve-order", "parent-first");
 
+        session(flinkConfigure);
+        application(flinkConfigure);
+    }
+
+    private static void application(Configuration flinkConfigure) throws Exception {
+
+        String salt = RandomStringUtils.randomAlphanumeric(4).toLowerCase();
+        String clusterId = String.format("%s-%s", "test", salt);
+        flinkConfigure.set(KubernetesConfigOptions.CLUSTER_ID, clusterId);
+
+        flinkConfigure.set(
+                DeploymentOptions.TARGET, KubernetesDeploymentTarget.APPLICATION.getName());
+
+
+        String remoteCoreJarPath =
+                "local://"
+                        + "/opt/flink"
+                        + File.separator
+                        + "usrlib/chunjun-core-release_1.12_5.3.x.jar";
+        flinkConfigure.set(
+                PipelineOptions.JARS, Collections.singletonList(remoteCoreJarPath));
+
+        // jobId, application模式jobGraph在远端生成，因此这里指定jobId
+        flinkConfigure.set(
+                PipelineOptionsInternal.PIPELINE_FIXED_JOB_ID, JobID.generate().toString());
+
+
+        // filebeat
+        flinkConfigure.setString(
+                ResourceManagerOptions.CONTAINERIZED_MASTER_ENV_PREFIX + "TASK_ID",
+                clusterId);
+        flinkConfigure.setString(
+                ResourceManagerOptions.CONTAINERIZED_TASK_MANAGER_ENV_PREFIX
+                        +"TASK_ID",
+                clusterId);
+
+        ApplicationConfiguration applicationConfiguration =
+                new ApplicationConfiguration(
+                         buildFlinkxProgramArgs("kubernetes-application").toArray(new String[0]),
+                       "com.dtstack.chunjun.Main");
+
+        KubernetesClusterClientFactory kubernetesClusterClientFactory =
+                new KubernetesClusterClientFactory();
+        KubernetesClusterDescriptor descriptor =
+                kubernetesClusterClientFactory.createClusterDescriptor(flinkConfigure);
+        ClusterSpecification clusterSpecification =
+                KubernetesPluginUtil.getClusterSpecification(flinkConfigure);
+        ClusterClientProvider<String> clientProvider =
+                descriptor.deployApplicationCluster(clusterSpecification, applicationConfiguration);
+    }
+
+    public static void session(Configuration flinkConfigure) throws Exception {
         flinkConfigure.set(DeploymentOptions.TARGET, KubernetesSessionClusterExecutor.NAME);
 
         final ClusterClientFactory<String> kubernetesClusterClientFactory =
@@ -49,15 +110,15 @@ public class Main {
         String clusterId = clusterClient.getClusterId();
 
 
-        clusterClient.submitJob(buildJobgraph(flinkConfigure))
+        clusterClient.submitJob(buildJobgraph(flinkConfigure,"kubernetes-session"))
                 .thenApply(DetachedJobExecutionResult::new)
                 .get(5, TimeUnit.MINUTES);
 
         System.out.println("Hello world!");
     }
 
-    public static JobGraph buildJobgraph(Configuration flinkConfigure) throws Exception {
-        List<String> programArgList = buildFlinkxProgramArgs();
+    public static JobGraph buildJobgraph(Configuration flinkConfigure,String mode) throws Exception {
+        List<String> programArgList = buildFlinkxProgramArgs(mode);
 
         PackagedProgram packagedProgram =
                 KubernetesPluginUtil.buildProgram(
@@ -77,7 +138,7 @@ public class Main {
 
     }
 
-    public static List<String> buildFlinkxProgramArgs()
+    public static List<String> buildFlinkxProgramArgs(String mode)
             throws Exception {
 
         List<String> programArgList = new ArrayList<>(16);
@@ -86,7 +147,6 @@ public class Main {
         //            programArgList.addAll(Arrays.asList(args.split("\\s+")));
         //        }
         programArgList.add("-mode");
-        String mode = "kubernetes-session";
         programArgList.add(mode);
         programArgList.add("-jobType");
         programArgList.add("sync");
@@ -194,7 +254,7 @@ public class Main {
         if (StringUtils.isNotEmpty(append)) {
             dtstackAppend = dtstackAppend + ";" + append;
         }
-        dtstackAppend = dtstackAppend+";"+"org.apache.flink.runtime.execution.librarycache.FlinkUserCodeClassLoaders";
+        dtstackAppend = dtstackAppend + ";" + "org.apache.flink.runtime.execution.librarycache.FlinkUserCodeClassLoaders";
         configuration.setString(
                 CoreOptions.ALWAYS_PARENT_FIRST_LOADER_PATTERNS_ADDITIONAL, dtstackAppend);
 

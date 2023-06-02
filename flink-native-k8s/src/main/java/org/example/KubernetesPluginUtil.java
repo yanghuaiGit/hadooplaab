@@ -114,4 +114,32 @@ public class KubernetesPluginUtil {
 
         return program;
     }
+
+    public static ClusterSpecification getClusterSpecification(Configuration configuration) {
+        Preconditions.checkNotNull(configuration);
+
+        final int jobManagerMemoryMB =
+                JobManagerProcessUtils.processSpecFromConfigWithNewOptionToInterpretLegacyHeap(
+                                configuration, JobManagerOptions.TOTAL_PROCESS_MEMORY)
+                        .getTotalProcessMemorySize()
+                        .getMebiBytes();
+
+        final int taskManagerMemoryMB =
+                TaskExecutorProcessUtils.processSpecFromConfig(
+                                TaskExecutorProcessUtils
+                                        .getConfigurationMapLegacyTaskManagerHeapSizeToConfigOption(
+                                                configuration,
+                                                TaskManagerOptions.TOTAL_PROCESS_MEMORY))
+                        .getTotalProcessMemorySize()
+                        .getMebiBytes();
+
+        int slotsPerTaskManager = configuration.getInteger(TaskManagerOptions.NUM_TASK_SLOTS);
+
+        return new ClusterSpecification.ClusterSpecificationBuilder()
+                .setMasterMemoryMB(jobManagerMemoryMB)
+                .setTaskManagerMemoryMB(taskManagerMemoryMB)
+                .setSlotsPerTaskManager(slotsPerTaskManager)
+                .createClusterSpecification();
+    }
+
 }
