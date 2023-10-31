@@ -2,11 +2,6 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
-      <option name="id" value="mapr-releases" />
-      <option name="name" value="mapr-releases" />
-      <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/groups/public/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -15,6 +10,11 @@
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="confluent-nexus" />
+      <option name="name" value="confluent-nexus" />
+      <option name="url" value="https://packages.confluent.io/maven/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="huaweicloudsdk" />
@@ -27,14 +27,29 @@
       <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/groups/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="apache-nexus" />
+      <option name="name" value="apache Repositories" />
+      <option name="url" value="https://repository.apache.org/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="public" />
+      <option name="name" value="public" />
+      <option name="url" value="https://maven.aliyun.com/repository/public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="jboss.community" />
-      <option name="name" value="JBoss Community repository" />
-      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+      <option name="id" value="dtstack-github" />
+      <option name="name" value="dtstack-github" />
+      <option name="url" value="https://github.com/dtstack/maven-repository/raw/master/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="dtstack-release" />
+      <option name="name" value="dtstack-release" />
+      <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/repositories/dtstack-release/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="dtstack-snapshot" />
@@ -45,6 +60,36 @@
       <option name="id" value="dtstack-release" />
       <option name="name" value="dtstack-release" />
       <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="mapr-releases" />
+      <option name="name" value="mapr-releases" />
+      <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="aliyun-nexus" />
+      <option name="name" value="aliyun-nexus" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="dtstack-repos" />
+      <option name="name" value="dtstack-repos" />
+      <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="dtstack-snapshot" />
+      <option name="name" value="dtstack-snapshot" />
+      <option name="url" value="http://nexus.dev.dtstack.cn/nexus/content/repositories/dtstack-snapshot/" />
     </remote-repository>
   </component>
 </project>

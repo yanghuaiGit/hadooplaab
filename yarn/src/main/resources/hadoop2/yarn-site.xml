@@ -1,0 +1,485 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+
+    <property>
+        <name>yarn.resourcemanager.cluster-id</name>
+        <value>yarn-rm-cluster</value>
+    </property>
+
+    <property> 
+   	<name>yarn.resourcemanager.ha.enabled</name> 
+   	<value>true</value>
+    </property>
+    <property>
+    	<name>yarn.resourcemanager.ha.rm-ids</name>
+	<value>rm1,rm2</value>
+    </property>
+
+    <property>
+        <name>ha.zookeeper.quorum</name>
+	<value>172.16.21.77:2181,172.16.23.231:2181,172.16.23.232:2181</value>
+    </property>
+
+    <!--开启自动恢复功能-->
+    <property>
+        <name>yarn.resourcemanager.recovery.enabled</name>
+        <value>true</value>
+    </property> 
+
+    <!--配置与zookeeper的连接地址-->
+    <property>
+        <name>yarn.resourcemanager.zk-state-store.address</name>
+        <value>172.16.21.77:2181,172.16.23.231:2181,172.16.23.232:2181</value>
+    </property>
+	
+    <property>
+        <name>yarn.resourcemanager.store.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+    <property>
+	<name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
+	<value>true</value>
+	<description>Enable automatic failover; By default, it is enabled only when HA is enabled.</description>
+    </property>
+
+
+    <property>
+	<name>yarn.resourcemanager.zk-address</name>
+        <value>172.16.21.77:2181,172.16.23.231:2181,172.16.23.232:2181</value>
+        <description>For multiple zk services, separate them with comma</description>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>512</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>12288</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.vmem-pmem-ratio</name>
+        <value>4.1</value>
+        <description>Ratio between virtual memory to physical memory when
+            setting memory limits for containers. Container allocations are
+            expressed in terms of physical memory, and virtual memory usage
+            is allowed to exceed this allocation by this ratio.
+        </description>
+    </property>
+
+    <property>
+	   <name>yarn.nodemanager.pmem-check-enabled</name>
+	   <value>true</value>
+    </property>
+    <property>
+	<name>yarn.nodemanager.webapp.address</name>
+      <value>0.0.0.0:18042</value>
+
+    </property>
+
+
+    <property>
+        <name>yarn.resourcemanager.address.rm1</name>
+        <value>172.16.23.231:8032</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.address.rm2</name>
+        <value>172.16.23.232:8032</value>
+    </property>
+
+
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.address.rm1</name>
+        <value>172.16.23.231:8030</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.address.rm2</name>
+        <value>172.16.23.232:8030</value>
+    </property>
+
+
+
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address.rm1</name>
+        <value>172.16.23.231:8031</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address.rm2</name>
+        <value>172.16.23.232:8031</value>
+    </property>
+
+
+
+    <property>
+        <name>yarn.resourcemanager.admin.address.rm1</name>
+        <value>172.16.23.231:8033</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.admin.address.rm2</name>
+        <value>172.16.23.232:8033</value>
+    </property>
+
+
+
+    <property>
+        <name>yarn.resourcemanager.webapp.address.rm1</name>
+        <value>172.16.23.231:18088</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.webapp.address.rm2</name>
+        <value>172.16.23.232:18088</value>
+    </property>
+
+
+    <property>  
+        <name>yarn.nodemanager.resource.cpu-vcores</name>  
+        <value>8</value>  
+    </property>  
+
+    <property>  
+        <name>yarn.nodemanager.resource.memory-mb</name>  
+        <value>12288</value>  
+    </property>  
+
+    <property>
+        <name>yarn.client.failover-proxy-provider</name>
+        <value>org.apache.hadoop.yarn.client.ConfiguredRMFailoverProxyProvider</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.ha.automatic-failover.zk-base-path</name>
+        <value>/yarn-leader-election</value>
+        <description>Optionalsetting.Thedefaultvalueis/yarn-leader-election</description>
+    </property>
+
+    <!---日志相关配置-->
+    <property>
+	  <name>yarn.log-aggregation.retain-check-interval-seconds</name>
+	  <value>604800</value>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+        <description>default is false</description>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir</name>
+        <value>/tmp/logs</value>
+        <description>default is /tmp/logs</description>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>604800</value>
+        <description>远程日志保存时间单位s</description>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.delete.debug-delay-sec</name>
+        <value>600</value>
+        <description>application 执行结束后延迟删除本地文件及日志</description>
+    </property>
+    
+    <property>
+        <name>yarn.log.server.url</name>
+       <value>http://172.16.21.77:19888/jobhistory/logs/</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.disk-health-checker.enable</name>
+       <value>true</value>
+   </property>
+
+    <property>
+        <name>yarn.nodemanager.disk-health-checker.interval-ms</name>
+       <value>120000</value>
+   </property>
+
+  <property>
+     <name>yarn.nodemanager.disk-health-checker.min-healthy-disks</name>
+     <value>0.25</value>
+  </property>
+  <property>
+     <name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name>
+     <value>90</value>
+  </property>
+
+    <property>
+        <name>yarn.nodemanager.disk-health-checker.min-free-space-per-disk-mb</name>
+        <value>10240</value>
+    </property>
+
+  <property>
+     <name>yarn.webapp.api-service.enable</name>
+     <value>false</value>
+  </property>
+
+    <property>
+        <name>yarn.nodemanager.localizer.cache.target-size-mb</name>
+        <value>10240</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.localizer.cache.cleanup.interval-ms</name>
+        <value>3600000</value>
+    </property>
+
+    <property>
+        <name>yarn.admin.acl</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.am.max-retries</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <description>The minimum allocation for every container request at the RM,
+            in terms of virtual CPU cores. Requests lower than this will throw a
+            InvalidResourceRequestException.</description>
+        <name>yarn.scheduler.minimum-allocation-vcores</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <description>The maximum allocation for every container request at the RM,
+            in terms of virtual CPU cores. Requests higher than this will throw a
+            InvalidResourceRequestException.</description>
+        <name>yarn.scheduler.maximum-allocation-vcores</name>
+        <value>4</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.max-completed-applications</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.env-whitelist</name>
+        <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,YARN_HOME</value>
+    </property>
+
+
+    <property>
+        <name>yarn.nodemanager.log.retain-seconds</name>
+        <value>10800</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir-suffix</name>
+        <value>logs</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.log-aggregation.compression-type</name>
+        <value>none</value>
+    </property>
+
+    <property>
+        <name>mapreduce.job.hdfs-servers</name>
+        <value>${fs.defaultFS}</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.job.task.listener.thread-count</name>
+        <value>30</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.job.client.port-range</name>
+        <value>50100-50200</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.job.committer.cancel-timeout</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.scheduler.heartbeat.interval-ms</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.client-am.ipc.max-retries</name>
+        <value>3</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.client.max-retries</name>
+        <value>3</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.client.thread-count</name>
+        <value>50</value>
+    </property>
+
+    <property>
+        <name>yarn.am.liveness-monitor.expiry-interval-ms</name>
+        <value>600000</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.client.thread-count</name>
+        <value>50</value>
+    </property>
+
+    <property>
+        <name>yarn.acl.enable</name>
+        <value>FALSE</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.admin.client.thread-count</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.amliveliness-monitor.interval-ms</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.container.liveness-monitor.interval-ms</name>
+        <value>600000</value>
+    </property>
+
+    <property>
+        <name>yarn.nm.liveness-monitor.expiry-interval-ms</name>
+        <value>600000</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.nm.liveness-monitor.interval-ms</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.client.thread-count</name>
+        <value>50</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.container-manager.thread-count</name>
+        <value>20</value>
+    </property>
+
+
+  <!-- cgroup -->
+    <property>
+        <name>yarn.nodemanager.container-executor.class</name>
+     
+        <value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
+     
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.delete.thread-count</name>
+        <value>4</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.group</name>
+        <value>admin</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.resources-handler.class</name>
+    
+        <value>org.apache.hadoop.yarn.server.nodemanager.util.CgroupsLCEResourcesHandler</value>
+    
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.cgroups.hierarchy</name>
+        <value>/hadoop-yarn</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.cgroups.mount</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.cgroups.mount-path</name>
+        <value>/sys/fs/cgroup</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.resource.percentage-physical-cpu-limit</name>
+        <value>80</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.cgroups.strict-resource-usage</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.resource.count-logical-processors-as-cores</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <description>The UNIX user that containers will run as when
+            Linux-container-executor is used in nonsecure mode (a use case for this
+            is using cgroups) if the
+            yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users is
+            set to true.</description>
+        <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.local-user</name>
+        <value>admin</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users</name>
+        <value>true</value>
+    </property>
+
+</configuration>
+

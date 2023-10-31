@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/data/hadoop_admin</value>
+    </property>
+
+   <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>sshfence</value>
+        <description>切换到ssh登录到另一台NameNode杀死旧的主进程.缺省是ssh,可设为shell.</description>
+    </property>
+
+    <property>
+           <name>dfs.ha.fencing.ssh.private-key-files</name>
+           <value>~/.ssh/id_rsa</value>
+    </property>
+
+    <property>
+        <name>ha.zookeeper.quorum</name>
+        <value>172.16.21.77:2181,172.16.23.231:2181,172.16.23.232:2181</value>
+    </property>
+
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://ns1</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.admin.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.admin.groups</name>
+        <value>*</value>
+    </property>
+
+    <property>
+       <name>fs.trash.interval</name>
+       <value>4320</value>
+    </property>
+
+    <property>
+        <name>hadoop.http.filter.initializers</name>
+        <value>org.apache.hadoop.http.lib.StaticUserWebFilter</value>
+    </property>
+
+     <property>
+        <name>hadoop.http.authentication.type</name>
+        <value>simple</value>
+    </property>
+
+    <property>
+        <name>hadoop.http.authentication.signature.secret.file</name>
+	<value>/data/hadoop_base/etc/hadoop/hadoop-http-auth-signature-secret</value>
+    </property>
+
+    <property>
+        <name>hadoop.http.authentication.simple.anonymous.allowed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.token.validity</name>
+        <value>36000</value>
+    </property>
+
+    <property>
+        <name>hadoop.security.authorization</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>security.job.submission.protocol.acl</name>
+        <value>admin</value>
+    </property>
+
+    <property>
+        <name>fs.trash.checkpoint.interval</name>
+        <value>0</value>
+    </property>
+
+    <property>
+        <name>ha.zookeeper.session-timeout.ms</name>
+        <value>5000</value>
+    </property>
+
+    <property>
+        <name>fs.permissions.umask-mode</name>
+        <value>022</value>
+    </property>
+
+    <property>
+        <name>io.native.lib.available</name>
+        <value>TRUE</value>
+    </property>
+
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>simple</value>
+    </property>
+
+    <property>
+        <name>io.bytes.per.checksum</name>
+        <value>512</value>
+    </property>
+
+    <property>
+        <name>fs.df.interval</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>io.seqfile.compress.blocksize</name>
+        <value>1000000</value>
+    </property>
+
+    <property>
+        <name>hadoop.util.hash.type</name>
+        <value>murmur</value>
+    </property>
+
+    <property>
+        <name>ipc.client.idlethreshold</name>
+        <value>4000</value>
+    </property>
+
+    <property>
+        <name>ipc.client.kill.max</name>
+        <value>10</value>
+    </property>
+
+    <property>
+        <name>ipc.client.connection.maxidletime</name>
+        <value>10000</value>
+    </property>
+
+    <property>
+        <name>ipc.client.connect.max.retries</name>
+        <value>10</value>
+    </property>
+
+    <property>
+        <name>ipc.client.connect.max.retries.on.timeouts</name>
+        <value>45</value>
+    </property>
+
+    <property>
+        <name>ipc.server.listen.queue.size</name>
+        <value>128</value>
+    </property>
+
+    <property>
+        <name>net.topology.node.switch.mapping.impl</name>
+        <value>org.apache.hadoop.net.ScriptBasedMapping</value>
+    </property>
+
+    <property>
+        <name>net.topology.script.number.args</name>
+        <value>100</value>
+    </property>
+
+    <property>
+        <name>ha.zookeeper.parent-znode</name>
+        <value>/hadoop-ha</value>
+    </property>
+
+    <property>
+        <name>ha.zookeeper.acl</name>
+        <value>world:anyone:rwcda</value>
+    </property>
+
+    <property>
+        <name>ha.health-monitor.connect-retry-interval.ms</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>ha.health-monitor.check-interval.ms</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>ha.health-monitor.sleep-after-disconnect.ms</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>ha.health-monitor.rpc-timeout.ms</name>
+        <value>45000</value>
+    </property>
+
+    <property>
+        <name>ha.failover-controller.new-active.rpc-timeout.ms</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>ha.failover-controller.graceful-fence.rpc-timeout.ms</name>
+        <value>5000</value>
+    </property>
+
+    <property>
+        <name>ha.failover-controller.graceful-fence.connection.retries</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>ha.failover-controller.cli-check.rpc-timeout.ms</name>
+        <value>20000</value>
+        <description>
+            Timeout that the CLI (manual) FC waits for monitorHealth, getServiceState
+        </description>
+    </property>
+    <property>
+        <name>fs.s3a.access.key</name>
+        <value>qingxingtest</value>
+    </property>
+    <property>
+        <name>fs.s3a.secret.key</name>
+        <value>qingxingtest</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.ssl.enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>fs.s3a.endpoint</name>
+        <value>http://172.16.23.178:9000</value>
+    </property>
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+    </property>
+    <property>
+        <name>ipc.maximum.data.length</name>
+        <value>134217728</value>
+        <description>This indicates the maximum IPC message length (bytes) that can be
+            accepted by the server. Messages larger than this value are rejected by the
+            immediately to avoid possible OOMs. This setting should rarely need to be
+            changed.
+        </description>
+    </property>
+     
+</configuration>
